@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-    http.HandleFunc("/move", WrapperMoveHandler)
+    http.HandleFunc("/move", JasonMoveHandler)
     http.ListenAndServe(":8000", nil)
 }
