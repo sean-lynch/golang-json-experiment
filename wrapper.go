@@ -99,7 +99,7 @@ func JasonMoveHandler(w http.ResponseWriter, r *http.Request) {
 	snakes, _ := request.GetObjectArray("snakes")
 	snake := snakes[0]
 
-	// Can't get coords
+	// Can't get nested arrays, so no coords
 
 
 	taunt,_ := snake.GetString("taunt")
