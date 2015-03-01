@@ -20,7 +20,7 @@ func TypedMoveHandler(w http.ResponseWriter, r *http.Request) {
 	bytes, _ := ioutil.ReadAll(r.Body)
 	request, err := typed.Json(bytes)
 	if err != nil { 
-		http.Error(w, "Invalid JSON", http.StatusBadRequest)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -50,7 +50,7 @@ func TypedMoveHandler(w http.ResponseWriter, r *http.Request) {
 func SimpleJSONMoveHandler(w http.ResponseWriter, r *http.Request) {
 	request, err := simplejson.NewFromReader(r.Body)
 	if err != nil { 
-		http.Error(w, "Invalid JSON", http.StatusBadRequest)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -58,7 +58,7 @@ func SimpleJSONMoveHandler(w http.ResponseWriter, r *http.Request) {
 	turn, _ := request.Get("turn").Int()
 	fmt.Printf("Turn: %d\n", turn)
 	
-	// Can't get nested arrays but not typed ones
+	// Can get nested arrays but not typed ones
 	// so we're back to messing with json.Numbers
 	c, _ := request.Get("snakes").GetIndex(0).Get("coords").GetIndex(0).Array()
 	x, _ := c[0].(json.Number).Int64()
@@ -89,7 +89,7 @@ func SimpleJSONMoveHandler(w http.ResponseWriter, r *http.Request) {
 func JasonMoveHandler(w http.ResponseWriter, r *http.Request) {
 	request, err := jason.NewObjectFromReader(r.Body)
 	if err != nil { 
-		http.Error(w, "Invalid JSON", http.StatusBadRequest)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -100,7 +100,6 @@ func JasonMoveHandler(w http.ResponseWriter, r *http.Request) {
 	snake := snakes[0]
 
 	// Can't get nested arrays, so no coords
-
 
 	taunt,_ := snake.GetString("taunt")
 

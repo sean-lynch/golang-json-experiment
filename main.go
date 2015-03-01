@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-    http.HandleFunc("/move", JasonMoveHandler)
+    http.HandleFunc("/move", MoveHandler)
     http.ListenAndServe(":8000", nil)
 }

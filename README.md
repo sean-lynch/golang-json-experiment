@@ -1,6 +1,6 @@
 # golang-json-experiment
 
-This project tests various mechanisms for parsing JSON in Go. Commentary on each will be available in an upcoming blog post.
+This project tests various mechanisms for parsing JSON in Go. Commentary on each here: http://sean.lyn.ch/2015/02/parsing-json-in-go/
 
 To run:
 

@@ -18,7 +18,7 @@ func LooseStructureMoveHandler(w http.ResponseWriter, r *http.Request) {
     // http://attilaolah.eu/2013/11/29/json-decoding-in-go/
     d.UseNumber()
 	if err := d.Decode(&request); err != nil { 
-		http.Error(w, "Invalid JSON", http.StatusBadRequest)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 

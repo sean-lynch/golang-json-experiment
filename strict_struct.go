@@ -114,7 +114,7 @@ func (c *Coord) UnmarshalJSON(b []byte) error {
 }
 
 func (c Coord) String() string {
-        return fmt.Sprintf("%d,%d", c.X, c.Y)
+    return fmt.Sprintf("%d,%d", c.X, c.Y)
 }
 
 
@@ -153,7 +153,7 @@ func StrictStructureMoveHandler(w http.ResponseWriter, r *http.Request) {
 	// https://groups.google.com/forum/#!msg/golang-nuts/__NG4nQJFMo/35ZPdeakCWAJ
 	// http://stackoverflow.com/a/18698091
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil { 
-		http.Error(w, "Invalid JSON", http.StatusBadRequest)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
